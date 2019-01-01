@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class CardUnit{
   final int cost;  //花费
   final int rarity;  //稀有
   final int priority; //优先
-  final String name;
+  final String name; //卡牌名称
   final String imgsrc; //封面
-  CardUnit(this.cost,this.rarity,this.priority,this.name,this.imgsrc);
+  final String href; //链接
+  CardUnit(this.cost,this.rarity,this.priority,this.name,this.imgsrc,this.href);
 }
 
 void main() => runApp(MyApp());
@@ -81,18 +83,37 @@ class CardGroupList extends StatelessWidget{
   CardGroupList({Key key, this.groupData, this.title}) : super(key: key);
   
   @override
-  //child: CardList(cards: groupData[index]['cards'])
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: GridView.count(
+        padding: EdgeInsets.only(top: 50.0),
         crossAxisCount: 4,
         children: List.generate(groupData['cards'].length, (index) {
-          return Center(
-            child: Image.asset(groupData['cards'][index]['staticsrc']),
+          return new ListTile(
+            leading: new Image.asset(groupData['cards'][index]['staticsrc']),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => CardDetail(webviewUri: groupData['cards'][index]['href'], cardName: groupData['cards'][index]['name'])
+              ));
+            },
           );
         }),
       )
+    );
+  }
+}
+
+class CardDetail extends StatelessWidget{
+  final String webviewUri;
+  final String cardName;
+  CardDetail({Key key, this.webviewUri, this.cardName}): super(key: key);
+
+  @override
+  Widget build(BuildContext content){
+    return WebviewScaffold(
+      url: webviewUri,
+      appBar: AppBar(title: Text(cardName)),
     );
   }
 }
