@@ -110,10 +110,19 @@ class CardDetail extends StatelessWidget{
   CardDetail({Key key, this.webviewUri, this.cardName}): super(key: key);
 
   @override
-  Widget build(BuildContext content){
+  Widget build(BuildContext context){
     return WebviewScaffold(
       url: webviewUri,
       appBar: AppBar(title: Text(cardName)),
+      withZoom: true,
+      withLocalStorage: true,
+      hidden: true,
+      initialChild: Container(
+        color: Theme.of(context).accentColor,
+        child: const Center(
+          child: Text('Waiting.....'),
+        ),
+      ),
     );
   }
 }
