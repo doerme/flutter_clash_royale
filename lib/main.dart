@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '皇室战争卡牌 19年1月',
       theme: ThemeData(
         primarySwatch: Colors.blue,
