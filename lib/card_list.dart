@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'card_detail.dart';
-import 'dart:convert';
 
 class CardList extends StatelessWidget{
   final Map groupData;
   final String title;
-  CardList({Key key, this.groupData, this.title}) : super(key: key);
+  final Map cardDetailData;
+  CardList({Key key, this.groupData, this.title, this.cardDetailData}) : super(key: key);
   
   @override
   Widget build(BuildContext context){
@@ -18,30 +18,16 @@ class CardList extends StatelessWidget{
           return new ListTile(
             leading: new Image.asset(groupData['cards'][index]['staticsrc']),
             onTap: (){
+              String cardKey = groupData['cards'][index]['href'].replaceAll('https://statsroyale.com/zh/card/', '');
+              print('cardKey:');
+              print(cardKey);
               Navigator.push(context, MaterialPageRoute(
-                builder: (context) => CardDataWrap(cardKey: groupData['cards'][index]['href'].replaceAll('https://statsroyale.com/zh/card/', ''))
+                builder: (context) => CardDetail(dataDetail: cardDetailData['data'][cardKey])
               ));
             },
           );
         }),
       )
     );
-  }
-}
-
-class CardDataWrap extends StatelessWidget {
-  final String cardKey;
-  CardDataWrap({Key key, this.cardKey}): super(key: key);
-  @override
-  Widget build(BuildContext context){
-    return FutureBuilder(
-        future: DefaultAssetBundle
-          .of(context)
-          .loadString('static/json/card_detail_data.json'),
-        builder: (context, snapshot) {
-          var jsondata=json.decode(snapshot.data.toString());
-          return CardDetail(dataDetail: jsondata['data'][cardKey]);
-        }
-      );
   }
 }
