@@ -27,18 +27,13 @@ class _CardDetailState extends State<CardDetail> {
       appBar: AppBar(
         title: Text(cardData['cardname']),
       ),
-      body: Container(
-        padding: EdgeInsets.all(32.0),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Text(cardData['description']),
-              )
-            ],
-          ),
-        ),
-      ),
+      body: SimpleDialog(
+        contentPadding: const EdgeInsets.all(10.0),
+        title: new Text(cardData['cardname']),
+        children: <Widget>[
+          new Text(cardData['description'])
+        ],
+      )
     );
   }
 }
