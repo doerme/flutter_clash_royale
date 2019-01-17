@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'card_detail.dart';
+import 'card_detail/card_detail.dart';
 
 class CardList extends StatelessWidget{
   final Map groupData;
@@ -22,7 +22,7 @@ class CardList extends StatelessWidget{
               print('cardKey:');
               print(cardKey);
               Navigator.push(context, MaterialPageRoute(
-                builder: (context) => CardDetail(dataDetail: cardDetailData['data'][cardKey])
+                builder: (context) => CardDetail(dataDetail: cardDetailData['data'][cardKey], assetUri: groupData['cards'][index]['staticsrc'])
               ));
             },
           );
