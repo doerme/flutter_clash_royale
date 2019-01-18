@@ -19,22 +19,22 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: buildGridList(),
+      child: buildGridList(),
     );
   }
 
   Widget buildGridList() {
     List<Widget> tiles = [];//先建一个数组用于存放循环生成的widget
     Widget content; //单独一个widget组件，用于返回需要生成的内容widget
-    for(List itemList in this._dataList) {
-      // if(this._dataList.length > 0) {
-      //   tiles.add(
-      //     new Row(children: <Widget>[
-      //       new Text(_nameList[0])
-      //     ],)
-      //   );
-      // }
-      for(Map item in itemList){
+    for(var index = 0; index < this._dataList.length; index++){
+      if(this._nameList.length >0 && this._nameList[index] != null){
+        tiles.add(
+          new Row(children: <Widget>[
+            new Text(this._nameList[index])
+          ],)
+        );
+      }
+      for(Map item in this._dataList[index]){
         tiles.add(
           new Row(
             children: <Widget>[
