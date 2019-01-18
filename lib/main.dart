@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'loading.dart';
-import 'my_home_page.dart';
 
 class CardUnit{
   final int cost;  //花费
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(homePage: MyHomePage(title: '皇室战争卡牌 19年1月')),
+      home: SplashScreen(),
     );
   }
 }
