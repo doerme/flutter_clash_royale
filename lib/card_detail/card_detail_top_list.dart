@@ -37,6 +37,15 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
             )
           ],)
         );
+      } else if(index > 0 && this._nameList.length > index - 1 && this._nameList[index - 1] != null) {
+        tiles.add(
+          new Row(children: <Widget>[
+            new Text(
+              '${this._nameList[index - 1]}(死亡时)',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            )
+          ],)
+        );
       }
       for(Map item in this._dataList[index]){
         if(item['type']!=''){
