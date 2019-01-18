@@ -38,6 +38,25 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
           ],)
         );
       }
+      List<Widget> rowWG = [];
+      List<Widget> levelCol = [];
+      levelCol.add(
+        Image.asset('static/img/icons/level.png', height: 20.0, width: 20.0)
+      );
+      levelCol.add(
+        Text('等级')
+      );
+      for(var level = 6; level <= 13; level++){
+        levelCol.add(
+          Text('$level')
+        );
+      }
+      rowWG.add(
+        Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: levelCol
+          )
+      );
       for(var tindex = 0; tindex < this._dataList[index].length; tindex++){
         List<Widget> colsWG = [];
         colsWG.add(
@@ -52,12 +71,21 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
           colsWG.add(
             Text(element)
           );
-        }); 
+        });
         
-        tiles.add(
-          Row(children: colsWG)
+        rowWG.add(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: colsWG
+          )
         );
       }
+      tiles.add(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: rowWG
+        )
+      );
     }
     content = new Column(
         children: tiles //重点在这里，因为用编辑器写Column生成的children后面会跟一个<Widget>[]，
