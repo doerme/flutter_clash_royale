@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'card_detail_top_list.dart';
+import 'card_detail_bottom_list.dart';
 
 void main() => runApp(MaterialApp(
       home: CardDetail(),
@@ -50,11 +51,27 @@ class _CardDetailState extends State<CardDetail> {
           ),
           Center(
             child: Text(
-              cardData['description'],
+              cardData['description'].replaceAll(cardData['rarity'], ''),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Center(
+            child: Text(
+              cardData['rarity'],
               textAlign: TextAlign.center,
             ),
           ),
           CardDetailTopList(dataList: cardData['cardUnit'], nameList: cardData['unitName']),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '等级数据',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0),
+              )
+            ],
+          ),
+          CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName']),
         ],
       )
     );
