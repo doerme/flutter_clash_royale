@@ -27,7 +27,7 @@ class _CardDetailState extends State<CardDetail> {
 
   @override
   Widget build(BuildContext context) {
-    const double _containerPadding = 10.0;
+    const double _containerPadding = 15.0;
     return Scaffold(
       appBar: AppBar(
         title: Text(cardData['cardname']),
@@ -52,19 +52,18 @@ class _CardDetailState extends State<CardDetail> {
           Center(
             child: Container(
               padding: EdgeInsets.all(_containerPadding),
-              child: Text(
-                cardData['description'].replaceAll(cardData['rarity'], ''),
-                textAlign: TextAlign.center,
-              ),
-            )
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(0.0),
-              child: Text(
-                cardData['rarity'],
-                textAlign: TextAlign.center,
-              ),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    cardData['description'].replaceAll(cardData['rarity'], ''),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    cardData['rarity'],
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              )
             )
           ),
           Container(

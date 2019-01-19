@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: '皇室战争卡牌 19年1月',
+      title: '皇室战争卡牌库',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

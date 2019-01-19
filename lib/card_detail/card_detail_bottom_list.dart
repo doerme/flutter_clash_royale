@@ -62,24 +62,34 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
       levelCol.add(
         Text('等级')
       );
+      levelCol.add(
+        new Divider()
+      );
       for(var level = this._rate; level <= 13; level++){
         levelCol.add(
           Text('$level')
         );
+        levelCol.add(
+          new Divider()
+        );
       }
       rowWG.add(
-        Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Expanded(
+          child: Column(
             children: levelCol
           )
+        )
       );
       for(var tindex = 0; tindex < this._dataList[index].length; tindex++){
         List<Widget> colsWG = [];
         colsWG.add(
-          Image.network('https:${this._dataList[index][tindex]['img']}', height: 20.0, width: 20.0)
+          Image.network('https:${this._dataList[index][tindex]['img']}', height: 20.0, width: 20.0),
         );
         colsWG.add(
           Text(this._dataList[index][tindex]['name'])
+        );
+        colsWG.add(
+          new Divider()
         );
         var levelDetail = this._dataList[index][tindex]['detail'];
         Set<String> itemset = Set.from(levelDetail);
@@ -87,12 +97,16 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
           colsWG.add(
             Text(element)
           );
+          colsWG.add(
+            new Divider()
+          );
         });
         
         rowWG.add(
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: colsWG
+          Expanded(
+            child: Column(
+              children: colsWG
+            ),
           )
         );
       }

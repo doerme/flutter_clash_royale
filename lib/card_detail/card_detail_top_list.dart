@@ -30,8 +30,8 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
       if(this._nameList.length >index && this._nameList[index] != null){
         print(this._nameList[index]);
         tiles.add(
-          new Row(children: <Widget>[
-            new Text(
+          Row(children: <Widget>[
+            Text(
               this._nameList[index],
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             )
@@ -39,8 +39,8 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
         );
       } else if(index > 0 && this._nameList.length > index - 1 && this._nameList[index - 1] != null) {
         tiles.add(
-          new Row(children: <Widget>[
-            new Text(
+          Row(children: <Widget>[
+            Text(
               '${this._nameList[index - 1]}(死亡时)',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             )
@@ -50,7 +50,7 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
       for(Map item in this._dataList[index]){
         if(item['type']!=''){
           tiles.add(
-            new Row(
+            Row(
               children: <Widget>[
                 Image.asset('static/img/icons/${item['type']}.png', height: 20.0, width: 20.0),
                 Text(item['name']),
@@ -61,13 +61,16 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
           );
         } else {
           tiles.add(
-            new Row(children: <Widget>[
+            Row(children: <Widget>[
               Text(item['name']),
               Expanded(child: Center(child:Text('')),),
               Text(item['value'])
             ],)
           );
         }
+        tiles.add(
+          Divider()
+        );
       }
     }
     content = new Column(

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'card_list.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title, this.cardListData, this.cardDetailData}) : super(key: key);
+  MyHomePage({Key key, this.title, this.cardListData, this.cardDetailData, this.appData}) : super(key: key);
   final String title;
   final Map cardListData;
   final Map cardDetailData;
+  final Map appData;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -13,10 +14,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Map _cardListData;
   Map _cardDetailData;
+  String _title;
   @override
   void initState () {
     this._cardListData = super.widget.cardListData;
     this._cardDetailData = super.widget.cardDetailData;
+    this._title = '${super.widget.appData['data']['title']} ${super.widget.appData['data']['updatetime']}';
     super.initState();
   }
 
@@ -44,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(this._title),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

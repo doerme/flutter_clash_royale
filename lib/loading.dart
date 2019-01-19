@@ -14,12 +14,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Animation _animation;
   Map _cardListData;
   Map _cardDetailData;
+  Map _appData;
   void initState() {
     getCardListData();
     getCardDetailData();
+    getAppData();
     super.initState();
     _controller = AnimationController(
-      vsync:this,duration:Duration(milliseconds:3000)
+      vsync:this,duration:Duration(milliseconds:30000)
     );
     _animation = Tween(begin: 1.0, end:0.0).animate(_controller);
     /*动画事件监听器，
@@ -59,14 +61,29 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     }
   }
 
+  Future getAppData() async {
+    final response = await http.get('https://www.jeremypay.com/json/app_data.json');
+    if (response.statusCode == 200) {
+      setState(() {
+        _appData = json.decode(response.body);
+      });
+      goMyHomePage();
+    } else {
+      throw Exception('Failed to load getCardDetailData');
+    }
+  }
+
   void goMyHomePage(){
-    if(this._cardListData!= null && this._cardDetailData != null){
+    // print(this._cardListData);
+    // print(this._cardDetailData);
+    // print(this._appData);
+    if(this._cardListData!= null && this._cardDetailData != null && this._appData != null){
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
         builder: (context)=> MyHomePage(
-          title: '皇室战争卡牌 19年1月',
           cardListData: this._cardListData,
-          cardDetailData: this._cardDetailData
+          cardDetailData: this._cardDetailData,
+          appData: this._appData
         )), 
         (route)=> route==null
       );
@@ -84,8 +101,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       color: Colors.white,
       child: FadeTransition( //透明度动画组件
         opacity: _animation,  //执行动画
-        child: Image.asset('static/img/loading/doerme.jpg',
-        scale: 0.5),
+        child: Image.asset('static/img/loading/title.png',
+        scale: 1),
       )
     );
   }
