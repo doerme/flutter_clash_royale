@@ -46,18 +46,21 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
     for(var index = 0; index < this._dataList.length; index++){
       if(this._nameList.length > index){
         tiles.add(
-          Row(children: <Widget>[
-            Text(
-              this._nameList[index],
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            )
-          ],)
+          Container(
+            padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+            child: Row(children: <Widget>[
+              Text(
+                this._nameList[index],
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              )
+            ],),
+          )
         );
       }
       List<Widget> rowWG = [];
       List<Widget> levelCol = [];
       levelCol.add(
-        Image.asset('static/img/icons/level.png', height: 20.0, width: 20.0)
+        Image.asset('static/img/icons/level.png', height: 25.0, width: 25.0)
       );
       levelCol.add(
         Text('等级')
@@ -83,7 +86,7 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
       for(var tindex = 0; tindex < this._dataList[index].length; tindex++){
         List<Widget> colsWG = [];
         colsWG.add(
-          Image.network('https:${this._dataList[index][tindex]['img']}', height: 20.0, width: 20.0),
+          Image.network('https:${this._dataList[index][tindex]['img']}', height: 25.0, width: 25.0),
         );
         colsWG.add(
           Text(this._dataList[index][tindex]['name'])

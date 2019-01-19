@@ -26,25 +26,32 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
   Widget buildGridList() {
     List<Widget> tiles = [];//先建一个数组用于存放循环生成的widget
     Widget content; //单独一个widget组件，用于返回需要生成的内容widget
+    print(this._dataList.length);
     for(var index = 0; index < this._dataList.length; index++){
       if(this._nameList.length >index && this._nameList[index] != null){
         print(this._nameList[index]);
         tiles.add(
-          Row(children: <Widget>[
-            Text(
-              this._nameList[index],
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            )
-          ],)
+          Container(
+            padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+            child: Row(children: <Widget>[
+              Text(
+                this._nameList[index],
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              )
+            ],)
+          )
         );
-      } else if(index > 0 && this._nameList.length > index - 1 && this._nameList[index - 1] != null) {
+      } else if(index > 0 && this._dataList[index] != null && this._dataList[index].length > 0 && this._nameList.length > index - 1 && this._nameList[index - 1] != null) {
         tiles.add(
-          Row(children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+            child: Row(children: <Widget>[
             Text(
               '${this._nameList[index - 1]}(死亡时)',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             )
-          ],)
+          ],),
+          )
         );
       }
       for(Map item in this._dataList[index]){
@@ -52,7 +59,10 @@ class _CardDetailTopListState extends State<CardDetailTopList> {
           tiles.add(
             Row(
               children: <Widget>[
-                Image.asset('static/img/icons/${item['type']}.png', height: 20.0, width: 20.0),
+                Container(
+                  margin: EdgeInsets.only(right: 10.0),
+                  child: Image.asset('static/img/icons/${item['type']}.png', height: 25.0, width: 25.0),
+                ),
                 Text(item['name']),
                 Expanded(child: Center(child:Text('')),),
                 Text(item['value'])
