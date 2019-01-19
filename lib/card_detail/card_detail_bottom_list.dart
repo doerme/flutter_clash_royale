@@ -3,17 +3,33 @@ import 'package:flutter/material.dart';
 class CardDetailBottomList extends StatefulWidget {
   final List dataList;
   final List nameList;
-  CardDetailBottomList({Key key, this.dataList, this.nameList}): super(key: key);
+  final String rare;
+  CardDetailBottomList({Key key, this.dataList, this.nameList, this.rare}): super(key: key);
   _CardDetailBottomListState createState() => _CardDetailBottomListState();
 }
 
 class _CardDetailBottomListState extends State<CardDetailBottomList> {
   List _dataList;
   List _nameList;
+  int _rate;
   @override
     void initState() {
       this._dataList = super.widget.dataList;
       this._nameList = super.widget.nameList;
+      switch(super.widget.rare){
+        case '传奇':
+        this._rate = 9;
+        break;
+        case '史诗':
+        this._rate = 6;
+        break;
+        case '稀有':
+        this._rate = 3;
+        break;
+        case '普通':
+        this._rate = 1;
+        break;
+      }
       super.initState();
     }
 
@@ -46,7 +62,7 @@ class _CardDetailBottomListState extends State<CardDetailBottomList> {
       levelCol.add(
         Text('等级')
       );
-      for(var level = 6; level <= 13; level++){
+      for(var level = this._rate; level <= 13; level++){
         levelCol.add(
           Text('$level')
         );

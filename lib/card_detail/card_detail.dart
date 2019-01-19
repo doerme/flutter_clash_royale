@@ -71,7 +71,7 @@ class _CardDetailState extends State<CardDetail> {
               )
             ],
           ),
-          CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName']),
+          CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName'], rare: cardData['rare']),
         ],
       )
     );
