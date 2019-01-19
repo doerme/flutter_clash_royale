@@ -1,4 +1,4 @@
-# clash_royale_stats
+# 卡牌库:皇室战争
 
 A new Flutter project.
 
