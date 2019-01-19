@@ -27,7 +27,7 @@ class _CardDetailState extends State<CardDetail> {
 
   @override
   Widget build(BuildContext context) {
-    print(cardData);
+    const double _containerPadding = 10.0;
     return Scaffold(
       appBar: AppBar(
         title: Text(cardData['cardname']),
@@ -35,7 +35,7 @@ class _CardDetailState extends State<CardDetail> {
       body: ListView(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.all(10.0),
+            margin: const EdgeInsets.all(_containerPadding),
             width: 180.0,
             height: 180.0,
             child: Image.asset(assetUri),
@@ -50,18 +50,27 @@ class _CardDetailState extends State<CardDetail> {
             ],
           ),
           Center(
-            child: Text(
-              cardData['description'].replaceAll(cardData['rarity'], ''),
-              textAlign: TextAlign.center,
-            ),
+            child: Container(
+              padding: EdgeInsets.all(_containerPadding),
+              child: Text(
+                cardData['description'].replaceAll(cardData['rarity'], ''),
+                textAlign: TextAlign.center,
+              ),
+            )
           ),
           Center(
-            child: Text(
-              cardData['rarity'],
-              textAlign: TextAlign.center,
-            ),
+            child: Container(
+              padding: EdgeInsets.all(0.0),
+              child: Text(
+                cardData['rarity'],
+                textAlign: TextAlign.center,
+              ),
+            )
           ),
-          CardDetailTopList(dataList: cardData['cardUnit'], nameList: cardData['unitName']),
+          Container(
+            padding: EdgeInsets.all(_containerPadding),
+            child: CardDetailTopList(dataList: cardData['cardUnit'], nameList: cardData['unitName']),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -71,7 +80,10 @@ class _CardDetailState extends State<CardDetail> {
               )
             ],
           ),
-          CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName'], rare: cardData['rare']),
+          Container(
+            padding: EdgeInsets.all(_containerPadding),
+            child: CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName'], rare: cardData['rare']),
+          ),
         ],
       )
     );
