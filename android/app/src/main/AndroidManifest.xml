@@ -14,7 +14,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="卡牌库:皇室战争"
+        android:label="皇室战争卡牌库争"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

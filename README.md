@@ -1,4 +1,4 @@
-# 卡牌库:皇室战争
+# 皇室战争卡牌库争
 
 A new Flutter project.
 
