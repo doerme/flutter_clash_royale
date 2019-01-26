@@ -38,9 +38,7 @@ class TutorialOverlay extends ModalRoute<void> {
     type: MaterialType.transparency,
     // make sure that the overlay content is not cut off
     child: SafeArea(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5.0,sigmaY: 5.0),
-        child: Stack(
+      child: Stack(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
@@ -67,8 +65,7 @@ class TutorialOverlay extends ModalRoute<void> {
             ),
           ],
         )
-        )
-      )  
+      )
     );
   }
 

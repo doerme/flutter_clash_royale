@@ -34,7 +34,7 @@ class _CardPageViewState extends State<CardPageView> {
         initialPage: _eqid
       ),
       itemBuilder: (context, position) {
-        String _cardKey = super.widget.groupData[super.widget.eqid]['href'].replaceAll('https://statsroyale.com/zh/card/', '');
+        String _cardKey = super.widget.groupData[position]['href'].replaceAll('https://statsroyale.com/zh/card/', '');
         return Padding(
           padding: EdgeInsets.symmetric(
             vertical: 10.0,

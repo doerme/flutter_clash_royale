@@ -42,6 +42,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
+    - static/img/common/
     - static/img/icons/
     - static/img/loading/
     - static/img/army/three_musketeers.png
