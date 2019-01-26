@@ -29,9 +29,6 @@ class _CardDetailState extends State<CardDetail> {
   Widget build(BuildContext context) {
     const double _containerPadding = 15.0;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(cardData['cardname']),
-      ),
       body: ListView(
         children: <Widget>[
           Container(

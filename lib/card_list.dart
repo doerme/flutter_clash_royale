@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'card_detail/card_detail.dart';
+import 'card_detail2.0/modalroute.dart';
 
 class CardList extends StatelessWidget{
   final Map groupData;
@@ -21,9 +21,14 @@ class CardList extends StatelessWidget{
               String cardKey = groupData['cards'][index]['href'].replaceAll('https://statsroyale.com/zh/card/', '');
               print('cardKey:');
               print(cardKey);
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => CardDetail(dataDetail: cardDetailData['data'][cardKey], assetUri: groupData['cards'][index]['staticsrc'])
+              Navigator.of(context).push(TutorialOverlay(
+                eqid: index,
+                groupData: groupData['cards'],
+                cardDetailData: cardDetailData['data']
               ));
+              // Navigator.push(context, MaterialPageRoute(
+              //   builder: (context) => CardDetail(dataDetail: cardDetailData['data'][cardKey], assetUri: groupData['cards'][index]['staticsrc'])
+              // ));
             },
           );
         }),
