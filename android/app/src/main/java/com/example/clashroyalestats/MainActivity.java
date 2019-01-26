@@ -1,4 +1,4 @@
-package com.example.clashroyalestats;
+package com.clashroyalestats.clashroyalestats;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
