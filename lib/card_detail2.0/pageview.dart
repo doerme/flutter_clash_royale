@@ -6,7 +6,8 @@ void main() => runApp(MaterialApp(
     ));
 
 class CardPageView extends StatefulWidget {
-  CardPageView({Key key, this.eqid, this.groupData, this.cardDetailData}): super(key: key);
+  CardPageView({Key key, this.eqid, this.groupData, this.cardDetailData})
+      : super(key: key);
   final int eqid;
   final List groupData;
   final Map cardDetailData;
@@ -19,7 +20,7 @@ class _CardPageViewState extends State<CardPageView> {
   List _groupData;
   int _eqid;
   @override
-  void initState(){
+  void initState() {
     this._eqid = super.widget.eqid;
     this._groupData = super.widget.groupData;
     this._cardDetailData = super.widget.cardDetailData;
@@ -29,19 +30,20 @@ class _CardPageViewState extends State<CardPageView> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: PageController(
-        viewportFraction: 0.8,
-        initialPage: _eqid
-      ),
+      controller: PageController(viewportFraction: 0.8, initialPage: _eqid),
       itemBuilder: (context, position) {
-        String _cardKey = super.widget.groupData[super.widget.eqid]['href'].replaceAll('https://statsroyale.com/zh/card/', '');
+        String _cardKey = super
+            .widget
+            .groupData[super.widget.eqid]['href']
+            .replaceAll('https://statsroyale.com/zh/card/', '');
         return Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 10.0,
-            horizontal: 10.0,
-          ),
-          child: CardDetail(dataDetail: _cardDetailData[_cardKey], assetUri: _groupData[position]['staticsrc'])
-        );
+            padding: EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 10.0,
+            ),
+            child: CardDetail(
+                dataDetail: _cardDetailData[_cardKey],
+                assetUri: _groupData[position]['staticsrc']));
       },
       itemCount: _groupData.length,
     );

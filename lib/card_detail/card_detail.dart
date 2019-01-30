@@ -9,7 +9,7 @@ void main() => runApp(MaterialApp(
 class CardDetail extends StatefulWidget {
   final Map dataDetail;
   final String assetUri;
-  CardDetail({Key key, this.dataDetail, this.assetUri}): super(key: key);
+  CardDetail({Key key, this.dataDetail, this.assetUri}) : super(key: key);
 
   @override
   _CardDetailState createState() => _CardDetailState();
@@ -29,60 +29,61 @@ class _CardDetailState extends State<CardDetail> {
   Widget build(BuildContext context) {
     const double _containerPadding = 15.0;
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(_containerPadding),
-            width: 180.0,
-            height: 180.0,
-            child: Image.asset(assetUri),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                cardData['cardname'],
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0),
-              )
-            ],
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(_containerPadding),
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    cardData['description'].replaceAll(cardData['rarity'], ''),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    cardData['rarity'],
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              )
+        body: ListView(
+      children: <Widget>[
+        Container(
+          margin: const EdgeInsets.all(_containerPadding),
+          width: 180.0,
+          height: 180.0,
+          child: Image.asset(assetUri),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              cardData['cardname'],
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0),
             )
-          ),
-          Container(
-            padding: EdgeInsets.all(_containerPadding),
-            child: CardDetailTopList(dataList: cardData['cardUnit'], nameList: cardData['unitName']),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                '等级数据',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0),
-              )
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(_containerPadding),
-            child: CardDetailBottomList(dataList: cardData['levelData'], nameList: cardData['unitName'], rare: cardData['rare']),
-          ),
-        ],
-      )
-    );
+          ],
+        ),
+        Center(
+            child: Container(
+                padding: EdgeInsets.all(_containerPadding),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      cardData['description']
+                          .replaceAll(cardData['rarity'], ''),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      cardData['rarity'],
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ))),
+        Container(
+          padding: EdgeInsets.all(_containerPadding),
+          child: CardDetailTopList(
+              dataList: cardData['cardUnit'], nameList: cardData['unitName']),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '等级数据',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0),
+            )
+          ],
+        ),
+        Container(
+          padding: EdgeInsets.all(_containerPadding),
+          child: CardDetailBottomList(
+              dataList: cardData['levelData'],
+              nameList: cardData['unitName'],
+              rare: cardData['rare']),
+        ),
+      ],
+    ));
   }
 }
-
