@@ -38,38 +38,35 @@ class TutorialOverlay extends ModalRoute<void> {
         type: MaterialType.transparency,
         // make sure that the overlay content is not cut off
         child: SafeArea(
-            child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: CardPageView(
-                          eqid: eqid,
-                          groupData: groupData,
-                          cardDetailData: cardDetailData),
-                    ),
-                    Positioned(
-                        left: MediaQuery.of(context).size.width / 2 - 25,
-                        bottom: 20.0,
-                        child: ButtonTheme(
-                            minWidth: 50.0,
-                            child: RaisedButton(
-                              color: Color(0xFF2a2e30),
-                              child: Opacity(
-                                opacity: 0.6,
-                                child:
-                                    Icon(Icons.close, color: Color(0xFFFFFFFF)),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0)),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ))),
-                  ],
-                ))));
+            child: Stack(
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: CardPageView(
+                  eqid: eqid,
+                  groupData: groupData,
+                  cardDetailData: cardDetailData),
+            ),
+            Positioned(
+                left: MediaQuery.of(context).size.width / 2 - 25,
+                bottom: 20.0,
+                child: ButtonTheme(
+                    minWidth: 50.0,
+                    child: RaisedButton(
+                      color: Color(0xFF2a2e30),
+                      child: Opacity(
+                        opacity: 0.6,
+                        child: Icon(Icons.close, color: Color(0xFFFFFFFF)),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ))),
+          ],
+        )));
   }
 
   @override

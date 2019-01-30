@@ -2,6 +2,15 @@
 
 这是supercell旗下著名游戏：部落冲突-皇室战争的辅助工具。皇室战争卡牌库，包含所有的卡牌信息：建筑、军队、法术卡牌信息。保持与官方同步更新。当前数据为2019年1月份。
 
+
+皇室战争卡牌数据、持续保持更新
+
+# 后续规划
+
+使用 router
+
+引入国际化
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
